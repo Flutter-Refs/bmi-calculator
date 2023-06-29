@@ -1,15 +1,13 @@
 // Reusable text
 // ignore_for_file: must_be_immutable
 
+import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
 
-const headerFontSize = 18.0;
-const Color headerColour = Color(0xFF8D8E98);
-
-class Heading extends StatelessWidget {
+class LabelText extends StatelessWidget {
   String text;
 
-  Heading({
+  LabelText({
     super.key,
     required this.text,
   });
@@ -18,10 +16,7 @@ class Heading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(
-        fontSize: headerFontSize,
-        color: headerColour,
-      ),
+      style: kLabelTextStyle,
     );
   }
 }

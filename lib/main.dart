@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, use_full_hex_values_for_flutter_colors
 
+import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/input_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +16,10 @@ class BMICalculator extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Color(0xFF090c22),
-          secondary: Color(0xFFea1556),
+          primary: kPrimaryColour,
+          secondary: kSecondaryColour,
         ),
-        scaffoldBackgroundColor: Color(0xFF090c22),
+        scaffoldBackgroundColor: kPrimaryColour,
       ),
       home: InputPage(),
     );

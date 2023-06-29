@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:bmi_calculator/circle_icon.dart';
-import 'package:bmi_calculator/heading.dart';
+import 'package:bmi_calculator/label_text.dart';
 import 'package:bmi_calculator/input_number_type.dart';
 import 'package:bmi_calculator/numeric_text.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +48,7 @@ class _InputNumberCardState extends State<InputNumberCard> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Heading(
+        LabelText(
           text: title,
         ),
         NumericText(

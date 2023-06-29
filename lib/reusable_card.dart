@@ -2,16 +2,16 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:bmi_calculator/constants.dart';
 
 class ReusableCard extends StatelessWidget {
-  static const Color defaultColour = Color(0xFF1D1E33);
   final Color colour;
   final Widget? cardChild;
   final VoidCallback onPress;
 
   const ReusableCard({
     super.key,
-    this.colour = defaultColour,
+    this.colour = kDefaultCardColour,
     this.cardChild,
     required this.onPress,
   });

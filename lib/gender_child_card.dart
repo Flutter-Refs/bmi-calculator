@@ -1,6 +1,6 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:bmi_calculator/heading.dart';
+import 'package:bmi_calculator/label_text.dart';
 import 'package:bmi_calculator/gender.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -26,7 +26,7 @@ class GenderChildCard extends StatelessWidget {
         const SizedBox(
           height: 18,
         ),
-        Heading(
+        LabelText(
           text: gender.name.toUpperCase(),
         ),
       ],

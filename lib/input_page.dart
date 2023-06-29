@@ -1,16 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
+import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/gender.dart';
 import 'package:bmi_calculator/gender_child_card.dart';
+import 'package:bmi_calculator/label_text.dart';
+import 'package:bmi_calculator/numeric_text.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:flutter/material.dart';
 
 const bottomContainerHeight = 80.0;
-const Color headerColour = Color(0xFF8D8E98);
-
-const Color activeCardColor = Color(0xFF1D1E33);
-const Color inactiveCardColor = Color(0xFF111328);
-
 Gender? selectedGender;
 
 class InputPage extends StatefulWidget {
@@ -21,7 +19,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  // double _heightSliderValue = 170;
+  double _heightSliderValue = 170;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +40,7 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = Gender.male;
                       });
                     },
-                    colour: selectedGender == Gender.male ? activeCardColor : inactiveCardColor,
+                    colour: selectedGender == Gender.male ? kActiveCardColor : kInactiveCardColor,
                     cardChild: GenderChildCard(
                       gender: Gender.male,
                     ),
@@ -55,7 +53,7 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = Gender.female;
                       });
                     },
-                    colour: selectedGender == Gender.female ? activeCardColor : inactiveCardColor,
+                    colour: selectedGender == Gender.female ? kActiveCardColor : kInactiveCardColor,
                     cardChild: GenderChildCard(
                       gender: Gender.female,
                     ),
@@ -68,44 +66,45 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: ReusableCard(
               onPress: () {},
-              // cardChild: Column(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Heading(
-              //       text: 'HEIGHT',
-              //     ),
-              //     Row(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       crossAxisAlignment: CrossAxisAlignment.end,
-              //       children: [
-              //         NumericText(value: _heightSliderValue.round()),
-              //         Padding(
-              //           padding: const EdgeInsets.only(bottom: 10),
-              //           child: Heading(
-              //             text: 'cm',
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //     SizedBox(
-              //       height: 20,
-              //     ),
-              //     Slider(
-              //       value: _heightSliderValue,
-              //       max: 210,
-              //       min: 100,
-              //       label: _heightSliderValue.round().toString(),
-              //       thumbColor: Color(0xFFEA1556),
-              //       activeColor: Colors.white,
-              //       inactiveColor: headerColour,
-              //       onChanged: (double value) {
-              //         setState(() {
-              //           _heightSliderValue = value;
-              //         });
-              //       },
-              //     )
-              //   ],
-              // ),
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  LabelText(
+                    text: 'HEIGHT',
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        _heightSliderValue.round().toString(),
+                        style: kNumberTextStyle,
+                      ),
+                      LabelText(
+                        text: 'cm',
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Slider(
+                    value: _heightSliderValue,
+                    max: 210,
+                    min: 100,
+                    label: _heightSliderValue.round().toString(),
+                    thumbColor: kSecondaryColour,
+                    activeColor: Colors.white,
+                    inactiveColor: kHeaderColour,
+                    onChanged: (double value) {
+                      setState(() {
+                        _heightSliderValue = value;
+                      });
+                    },
+                  )
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -130,8 +129,9 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
+          // Calculate BMI
           Container(
-            color: Color(0xFFEA1556),
+            color: kSecondaryColour,
             width: double.infinity,
             height: bottomContainerHeight,
             margin: EdgeInsets.only(top: 10.0),
