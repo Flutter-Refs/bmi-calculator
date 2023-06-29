@@ -1,15 +1,20 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
+import 'package:bmi_calculator/circle_icon.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/gender.dart';
 import 'package:bmi_calculator/gender_child_card.dart';
 import 'package:bmi_calculator/label_text.dart';
-import 'package:bmi_calculator/numeric_text.dart';
 import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/rounded_icon_button.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomContainerHeight = 80.0;
 Gender? selectedGender;
+double height = 170;
+int weight = 75;
+int age = 20;
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -19,8 +24,6 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  double _heightSliderValue = 170;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +81,7 @@ class _InputPageState extends State<InputPage> {
                     textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
-                        _heightSliderValue.round().toString(),
+                        height.round().toString(),
                         style: kNumberTextStyle,
                       ),
                       LabelText(
@@ -89,19 +92,22 @@ class _InputPageState extends State<InputPage> {
                   SizedBox(
                     height: 20,
                   ),
-                  Slider(
-                    value: _heightSliderValue,
-                    max: 210,
-                    min: 100,
-                    label: _heightSliderValue.round().toString(),
-                    thumbColor: kSecondaryColour,
-                    activeColor: Colors.white,
-                    inactiveColor: kHeaderColour,
-                    onChanged: (double value) {
-                      setState(() {
-                        _heightSliderValue = value;
-                      });
-                    },
+                  SliderTheme(
+                    data: SliderThemeData(activeTrackColor: kPrimaryColour),
+                    child: Slider(
+                      value: height,
+                      max: 210,
+                      min: 100,
+                      label: height.round().toString(),
+                      thumbColor: kSecondaryColour,
+                      activeColor: Colors.white,
+                      inactiveColor: kHeaderColour,
+                      onChanged: (double value) {
+                        setState(() {
+                          height = value;
+                        });
+                      },
+                    ),
                   )
                 ],
               ),
@@ -113,17 +119,93 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     onPress: () {},
-                    // cardChild: InputNumberCard(
-                    //   type: InputNumberType.weight,
-                    // ),
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        LabelText(
+                          text: 'WEIGHT',
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // minus btn
+                            RoundIconButton(
+                              onPressed: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                              icon: FontAwesomeIcons.minus,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            // plus btn
+                            RoundIconButton(
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                              icon: FontAwesomeIcons.plus,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     onPress: () {},
-                    // cardChild: InputNumberCard(
-                    //   type: InputNumberType.age,
-                    // ),
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        LabelText(
+                          text: 'AGE',
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // minus btn
+                            RoundIconButton(
+                              onPressed: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                              icon: FontAwesomeIcons.minus,
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            // plus btn
+                            RoundIconButton(
+                              onPressed: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                              icon: FontAwesomeIcons.plus,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
