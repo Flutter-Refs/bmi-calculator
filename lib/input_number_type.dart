@@ -1,0 +1,4 @@
+enum InputNumberType {
+  weight,
+  age,
+}
