@@ -1,16 +1,17 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:bmi_calculator/gender.dart';
-import 'package:bmi_calculator/gender_card_child.dart';
-import 'package:bmi_calculator/heading.dart';
-import 'package:bmi_calculator/input_number_card.dart';
-import 'package:bmi_calculator/input_number_type.dart';
-import 'package:bmi_calculator/numeric_text.dart';
+import 'package:bmi_calculator/gender_child_card.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:flutter/material.dart';
 
 const bottomContainerHeight = 80.0;
 const Color headerColour = Color(0xFF8D8E98);
+
+const Color activeCardColor = Color(0xFF1D1E33);
+const Color inactiveCardColor = Color(0xFF111328);
+
+Gender? selectedGender;
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -20,7 +21,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  double _heightSliderValue = 170;
+  // double _heightSliderValue = 170;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +37,12 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(
+                    onPress: () {
+                      setState(() {
+                        selectedGender = Gender.male;
+                      });
+                    },
+                    colour: selectedGender == Gender.male ? activeCardColor : inactiveCardColor,
                     cardChild: GenderChildCard(
                       gender: Gender.male,
                     ),
@@ -43,6 +50,12 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: ReusableCard(
+                    onPress: () {
+                      setState(() {
+                        selectedGender = Gender.female;
+                      });
+                    },
+                    colour: selectedGender == Gender.female ? activeCardColor : inactiveCardColor,
                     cardChild: GenderChildCard(
                       gender: Gender.female,
                     ),
@@ -54,45 +67,45 @@ class _InputPageState extends State<InputPage> {
           // Height
           Expanded(
             child: ReusableCard(
-              colour: Color(0xFF101427),
-              cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Heading(
-                    text: 'HEIGHT',
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      NumericText(value: _heightSliderValue.round()),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: Heading(
-                          text: 'cm',
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Slider(
-                    value: _heightSliderValue,
-                    max: 210,
-                    min: 100,
-                    label: _heightSliderValue.round().toString(),
-                    thumbColor: Color(0xFFEA1556),
-                    activeColor: Colors.white,
-                    inactiveColor: headerColour,
-                    onChanged: (double value) {
-                      setState(() {
-                        _heightSliderValue = value;
-                      });
-                    },
-                  )
-                ],
-              ),
+              onPress: () {},
+              // cardChild: Column(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Heading(
+              //       text: 'HEIGHT',
+              //     ),
+              //     Row(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       crossAxisAlignment: CrossAxisAlignment.end,
+              //       children: [
+              //         NumericText(value: _heightSliderValue.round()),
+              //         Padding(
+              //           padding: const EdgeInsets.only(bottom: 10),
+              //           child: Heading(
+              //             text: 'cm',
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //     SizedBox(
+              //       height: 20,
+              //     ),
+              //     Slider(
+              //       value: _heightSliderValue,
+              //       max: 210,
+              //       min: 100,
+              //       label: _heightSliderValue.round().toString(),
+              //       thumbColor: Color(0xFFEA1556),
+              //       activeColor: Colors.white,
+              //       inactiveColor: headerColour,
+              //       onChanged: (double value) {
+              //         setState(() {
+              //           _heightSliderValue = value;
+              //         });
+              //       },
+              //     )
+              //   ],
+              // ),
             ),
           ),
           Expanded(
@@ -100,18 +113,18 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xFF101427),
-                    cardChild: InputNumberCard(
-                      type: InputNumberType.weight,
-                    ),
+                    onPress: () {},
+                    // cardChild: InputNumberCard(
+                    //   type: InputNumberType.weight,
+                    // ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xFF101427),
-                    cardChild: InputNumberCard(
-                      type: InputNumberType.age,
-                    ),
+                    onPress: () {},
+                    // cardChild: InputNumberCard(
+                    //   type: InputNumberType.age,
+                    // ),
                   ),
                 ),
               ],

@@ -21,7 +21,7 @@ class GenderChildCard extends StatelessWidget {
         Icon(
           (gender == Gender.male) ? FontAwesomeIcons.mars : FontAwesomeIcons.venus,
           size: 70.0,
-          color: headerColour,
+          color: Colors.white,
         ),
         const SizedBox(
           height: 18,
