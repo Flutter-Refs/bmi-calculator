@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
-import 'package:bmi_calculator/circle_icon.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/gender.dart';
 import 'package:bmi_calculator/gender_child_card.dart';
 import 'package:bmi_calculator/label_text.dart';
+import 'package:bmi_calculator/results_page.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:bmi_calculator/rounded_icon_button.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +43,9 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = Gender.male;
                       });
                     },
-                    colour: selectedGender == Gender.male ? kActiveCardColor : kInactiveCardColor,
+                    colour: selectedGender == Gender.male
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
                     cardChild: GenderChildCard(
                       gender: Gender.male,
                     ),
@@ -56,7 +58,9 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = Gender.female;
                       });
                     },
-                    colour: selectedGender == Gender.female ? kActiveCardColor : kInactiveCardColor,
+                    colour: selectedGender == Gender.female
+                        ? kActiveCardColor
+                        : kInactiveCardColor,
                     cardChild: GenderChildCard(
                       gender: Gender.female,
                     ),
@@ -212,17 +216,20 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           // Calculate BMI
-          Container(
-            color: kSecondaryColour,
-            width: double.infinity,
-            height: bottomContainerHeight,
-            margin: EdgeInsets.only(top: 10.0),
-            child: TextButton(
-              onPressed: () => {
-                setState(
-                  () => {},
-                )
-              },
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultsPage(),
+                ),
+              );
+            },
+            child: Container(
+              color: kSecondaryColour,
+              width: double.infinity,
+              height: bottomContainerHeight,
+              margin: EdgeInsets.only(top: 10.0),
               child: Center(
                 child: Text(
                   'CALCULATE YOUR BMI',
