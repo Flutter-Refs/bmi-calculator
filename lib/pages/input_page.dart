@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
+import 'package:bmi_calculator/bmi_calculator.dart';
 import 'package:bmi_calculator/components/bottom_button.dart';
 import 'package:bmi_calculator/common/constants.dart';
 import 'package:bmi_calculator/common/enums/gender.dart';
 import 'package:bmi_calculator/components/gender_child_card.dart';
 import 'package:bmi_calculator/components/label_text.dart';
+import 'package:bmi_calculator/main.dart';
 import 'package:bmi_calculator/pages/results_page.dart';
 import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:bmi_calculator/components/rounded_icon_button.dart';
@@ -217,12 +219,22 @@ class _InputPageState extends State<InputPage> {
           ),
           // Calculate BMI
           BottomButton(
-            label: 'CALCULATE YOUR BMI',
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ResultsPage()),
-            ),
-          ),
+              label: 'CALCULATE YOUR BMI',
+              onPressed: () {
+                Calculator bmiCalculator =
+                    Calculator(height: height.round(), weight: weight);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultsPage(
+                      bmiResult: bmiCalculator.calculateBMI(),
+                      resultText: bmiCalculator.getResult(),
+                      interpretation: bmiCalculator.getInterpretation(),
+                    ),
+                  ),
+                );
+              }),
         ],
       ),
     );
