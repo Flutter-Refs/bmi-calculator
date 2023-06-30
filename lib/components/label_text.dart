@@ -1,7 +1,7 @@
 // Reusable text
 // ignore_for_file: must_be_immutable
 
-import 'package:bmi_calculator/constants.dart';
+import 'package:bmi_calculator/common/constants.dart';
 import 'package:flutter/material.dart';
 
 class LabelText extends StatelessWidget {

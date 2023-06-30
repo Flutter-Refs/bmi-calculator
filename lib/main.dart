@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_full_hex_values_for_flutter_colors
 
-import 'package:bmi_calculator/constants.dart';
-import 'package:bmi_calculator/input_page.dart';
+import 'package:bmi_calculator/common/constants.dart';
+import 'package:bmi_calculator/pages/input_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

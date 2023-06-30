@@ -2,7 +2,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:bmi_calculator/constants.dart';
+import 'package:bmi_calculator/common/constants.dart';
 
 class ReusableCard extends StatelessWidget {
   final Color colour;
